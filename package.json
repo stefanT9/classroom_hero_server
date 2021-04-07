@@ -1,0 +1,38 @@
+{
+  "name": "classroom_hero_server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon",
+    "prestart": "npm run build",
+    "start": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/jsonwebtoken": "^8.5.1",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-healthcheck": "^0.1.0",
+    "express-validation": "^3.0.8",
+    "http-proxy": "^1.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.3",
+    "react-cookie": "^4.0.3",
+    "sfcookies": "^1.0.2",
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.2.3",
+    "winston": "^3.3.3"
+  },
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.37",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1"
+  }
+}
