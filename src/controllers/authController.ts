@@ -5,11 +5,26 @@ import {
 } from "../exceptions/authExceptions";
 
 import { RequestHandler } from "express-serve-static-core";
-import { attemptLogin, attemptRegister } from "../services/auth/authService";
+import {
+  attemptLogin,
+  attemptRegister,
+  getUserFromHeader,
+} from "../services/auth/authService";
 import getLogger from "../utlis/logger";
+import { getTokenUser } from "@/services/auth/authUtils";
 
 const logger = getLogger("auth");
 
+export const verifyToken: RequestHandler = async (req, res) => {
+  try {
+    const user = await getUserFromHeader(req.headers);
+    return res.status(200).json({ user, message: "correct token" });
+  } catch (err) {
+    return res
+      .status(401)
+      .json({ user: null, message: err.message, error: err.message });
+  }
+};
 export const login: RequestHandler = async (req, res) => {
   try {
     const { token, user } = await attemptLogin(

@@ -11,6 +11,7 @@ import { compareSync } from "bcrypt";
 import { IncomingHttpHeaders } from "http";
 import { IUser } from "@/model/user";
 const { user } = models;
+import * as cookieParser from "cookie-parser";
 
 export const attemptLogin = async (email: string, password: string) => {
   const foundUser = await user.findOne({ email });
@@ -46,10 +47,16 @@ export const attemptRegister = async (email: string, password: string) => {
 };
 
 export const getUserFromHeader = async (headers: IncomingHttpHeaders) => {
-  const token = headers?.authorization?.substr(7);
+  // todo if cookie will have more than acces token this will break
+  // const token = headers?.authorization?.substr(7);
+
+  const token = headers?.authorization
+    ? headers?.authorization?.substr(7)
+    : headers.cookie.split("=")[1].split(";")[0];
   if (!token) {
     throw new TokenNotAvailable();
   }
+  console.log(token);
   const user: IUser = await getTokenUser(token);
   return user;
 };

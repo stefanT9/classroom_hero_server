@@ -37,6 +37,10 @@ export const addUserToInvites = async (
 export const getAvailableConferences = async (user: IUser) => {
   const conferences = await conference.find({
     participantEmails: user.email,
+    hostId: { $ne: user.id },
   });
-  return conferences;
+  const ownedConferences = await conference.find({
+    hostId: user.id,
+  });
+  return [...conferences, ...ownedConferences];
 };
