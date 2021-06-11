@@ -3,15 +3,16 @@ const mongoose = require("mongoose");
 const logger = getLogger("[MONGOOSE LOADER]");
 
 const loadMongo = async () => {
+  const { MONGO_URL } = process.env;
+
   await mongoose
-    .connect(process.env.MONGO_URL, {
+    .connect(MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false,
     })
     .then((res) => {
-      console.log(res.connection.readyState);
       logger.info("connected to mongo");
     })
     .catch((err) => {

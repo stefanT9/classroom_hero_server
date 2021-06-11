@@ -27,6 +27,7 @@ export const createNewConference: RequestHandler = async (req, res) => {
     const conference = await createConference(user, req.body);
     return res.status(200).json({ conference });
   } catch (err) {
+    logger.error({ message: err.message, body: req.body });
     return res.status(500).json({ conferences: null, message: err.message });
   }
 };

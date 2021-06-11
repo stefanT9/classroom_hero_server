@@ -3,14 +3,14 @@ import { validate, Joi } from "express-validation";
 const loginValidation = {
   body: Joi.object({
     email: Joi.string().email().required(),
-    password: Joi.string().length(6).required(),
+    password: Joi.string().required(),
   }),
 };
 
 const registerValidation = {
   body: Joi.object({
     email: Joi.string().email().required(),
-    password: Joi.string().length(6).required(),
+    password: Joi.string().min(6).required(),
   }),
 };
 
