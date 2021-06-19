@@ -1,4 +1,4 @@
-import models from "../../model";
+import { user } from "../../model";
 import {
   EmailInUse,
   InvalidEmailPasswordCombo,
@@ -10,7 +10,6 @@ import { getTokenUser, getUserToken } from "./authUtils";
 import { compareSync } from "bcrypt";
 import { IncomingHttpHeaders } from "http";
 import { IUser } from "@/model/user";
-const { user } = models;
 import * as cookieParser from "cookie-parser";
 
 export const attemptLogin = async (email: string, password: string) => {
