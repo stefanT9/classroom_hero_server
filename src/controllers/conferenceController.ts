@@ -4,6 +4,7 @@ import {
   createConference,
   addUserToInvites,
   getAvailableConferences,
+  sendMail,
 } from "../services/conference/conferenceService";
 import { RequestHandler } from "express";
 import getLogger from "../utlis/logger";

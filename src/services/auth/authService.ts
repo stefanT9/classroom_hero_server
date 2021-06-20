@@ -24,7 +24,11 @@ export const attemptLogin = async (email: string, password: string) => {
 
   return { token: getUserToken(foundUser), user: foundUser };
 };
-export const attemptRegister = async (email: string, password: string) => {
+export const attemptRegister = async (
+  email: string,
+  password: string,
+  username?: string
+) => {
   const oldUser = await user.findOne({
     email: email,
   });
@@ -34,6 +38,7 @@ export const attemptRegister = async (email: string, password: string) => {
   const created = await user.create({
     email,
     password,
+    username,
   });
 
   if (created) {

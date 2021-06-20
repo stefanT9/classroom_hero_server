@@ -6,12 +6,13 @@
     "build": "tsc",
     "dev": "nodemon",
     "prestart": "npm run build",
-    "start": "ts-node src/index.ts",
+    "start": "export SENDGRID_API_KEY='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' && ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
     "@types/bcrypt": "^3.0.0",
     "@types/cookie-parser": "^1.4.2",
     "@types/jsonwebtoken": "^8.5.1",

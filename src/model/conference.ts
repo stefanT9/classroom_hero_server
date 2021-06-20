@@ -3,7 +3,9 @@ import { Schema, model, Types, Document } from "mongoose";
 export interface IConference extends Document {
   _id: Types.ObjectId;
   name: string;
+  description: string;
   startTime: Date;
+  endTime: Date;
   participantEmails: string[];
   hostId: Types.ObjectId;
 }

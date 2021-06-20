@@ -51,8 +51,9 @@ export const login: RequestHandler = async (req, res) => {
 
 export const register: RequestHandler = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await attemptRegister(email, password);
+    const { email, password, firstName, lastName } = req.body;
+    const username = `${firstName} ${lastName}`;
+    const user = await attemptRegister(email, password, username);
     res.status(200).json({ user });
   } catch (err) {
     if (err instanceof EmailInUse) {
